@@ -6,8 +6,8 @@ const iconMap = { Wallet, Send, Plane };
 
 const Services = () => {
   return (
-    <section id="services" className="bg-[#F7F8FA] py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="services" className="bg-[#F7F8FA] py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-3 text-[#F59E0B]">
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
@@ -19,7 +19,7 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => {
             const Icon = iconMap[s.icon];
             return (

@@ -4,8 +4,8 @@ import { stats } from '../mock/mockData';
 
 const About = () => {
   return (
-    <section id="about" className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+    <section id="about" className="bg-white py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
         <div>
           <div className="flex items-center gap-3 text-[#F59E0B]">
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
@@ -18,7 +18,7 @@ const About = () => {
             Located in the vibrant heart of Thamel, we have been the primary choice for tourists and locals since 2014. As an NRB licensed institution and active member of the Foreign Exchange Association of Nepal, we uphold the highest standards of financial integrity.
           </p>
 
-          <div className="mt-10 grid grid-cols-3 gap-8 max-w-md">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-md">
             {stats.map(s => (
               <div key={s.label}>
                 <div className="text-4xl md:text-5xl font-extrabold text-[#0B1220]">{s.value}</div>
@@ -27,7 +27,7 @@ const About = () => {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-6">
+          <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-md bg-slate-100 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-[#F59E0B]" />
@@ -44,14 +44,14 @@ const About = () => {
         </div>
 
         <div className="relative">
-          <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto w-full">
             <img
               src="https://images.unsplash.com/photo-1536690069676-13101e1659ed"
               alt="Thamel Kathmandu"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute top-6 left-6 md:left-2 lg:left-6 bg-white rounded-xl shadow-xl p-5 w-64">
+          <div className="absolute top-4 left-4 right-4 sm:left-6 sm:right-auto bg-white rounded-xl shadow-xl p-4 sm:p-5 w-auto max-w-[16rem] sm:w-64">
             <div className="font-bold text-slate-900">Google Reviews</div>
             <div className="mt-1 flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (

@@ -3,8 +3,8 @@ import { MapPin, PhoneCall, Clock } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-[#0B1220] py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 items-center">
+    <section id="contact" className="bg-[#0B1220] py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid gap-10 lg:grid-cols-2 lg:gap-12 items-center">
         <div>
           <div className="flex items-center gap-3 text-[#F59E0B]">
             <span className="h-[2px] w-8 bg-[#F59E0B]" />

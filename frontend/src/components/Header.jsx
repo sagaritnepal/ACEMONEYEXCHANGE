@@ -3,9 +3,9 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
-  <a href="#home" className="flex items-center gap-3 group">
-    <div className="w-11 h-11 rounded-lg bg-[#F59E0B] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-slate-900">
+  <a href="#home" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#F59E0B] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow flex-shrink-0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900">
         <path d="M6 20V10"/>
         <path d="M6 10c0-3 2-6 6-6s6 3 6 6"/>
         <path d="M18 10v10"/>
@@ -13,9 +13,9 @@ const Logo = () => (
         <path d="M9 14h6"/>
       </svg>
     </div>
-    <div className="flex flex-col leading-tight">
-      <span className="font-extrabold tracking-tight text-[15px] text-white">ACE MONEY EXCHANGE</span>
-      <span className="text-[10px] tracking-[0.22em] text-[#F59E0B] font-semibold">MONEY EXCHANGE</span>
+    <div className="flex flex-col leading-tight min-w-0">
+      <span className="font-extrabold tracking-tight text-[12px] sm:text-[15px] text-white whitespace-nowrap">ACE MONEY EXCHANGE</span>
+      <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-[#F59E0B] font-semibold whitespace-nowrap">MONEY EXCHANGE</span>
     </div>
   </a>
 );
@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B1220]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-3">
         <Logo />
         <nav className="hidden md:flex items-center gap-9">
           {links.map(l => (
@@ -66,13 +66,13 @@ const Header = () => {
             Get Live Rates
           </Button>
         </div>
-        <button className="md:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button className="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
       {mobileOpen && (
         <div className="md:hidden bg-[#0B1220] border-t border-white/10">
-          <div className="px-6 py-4 flex flex-col gap-4">
+          <div className="px-4 py-4 flex flex-col gap-4 sm:px-6">
             {links.map(l => (
               <button key={l.id} onClick={() => goTo(l.id)} className="text-left text-white/85 hover:text-[#F59E0B] font-medium">
                 {l.label}

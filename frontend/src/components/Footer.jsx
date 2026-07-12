@@ -4,8 +4,8 @@ import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="bg-[#050B15] text-slate-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-8">
-        <div className="grid md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-16 pb-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-lg bg-[#F59E0B] flex items-center justify-center">
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
           <div className="text-slate-500 text-sm">© 2024 Ace Money Exchange Pvt. Ltd. All Rights Reserved.</div>
           <div className="flex items-center gap-6 text-sm text-slate-500">
             <a href="#" className="hover:text-[#F59E0B]">Privacy Policy</a>

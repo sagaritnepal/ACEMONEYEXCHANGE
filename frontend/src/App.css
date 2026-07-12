@@ -3,6 +3,8 @@
 }
 
 html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+#root { min-height: 100vh; }
 
 /* Hide number input arrows */
 input[type=number]::-webkit-inner-spin-button,

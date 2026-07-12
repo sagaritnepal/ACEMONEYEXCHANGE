@@ -82,7 +82,7 @@ const RatesTable = () => {
 
   return (
     <section id="rates" className="bg-[#0B1220] pt-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="pb-10">
           <div className="flex items-center gap-3 text-[#F59E0B]">
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
@@ -115,7 +115,7 @@ const RatesTable = () => {
       </div>
 
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-10">
           <div className="flex justify-end mb-4">
             <div className="relative w-full sm:w-72">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -129,8 +129,8 @@ const RatesTable = () => {
           </div>
 
           <div className="rounded-xl border border-slate-200 overflow-hidden">
-            <div className="bg-[#0F1B2E] text-[#F59E0B] text-[11px] font-bold tracking-wider">
-              <div className="grid grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-6 py-4">
+            <div className="bg-[#0F1B2E] text-[#F59E0B] text-[11px] font-bold tracking-wider overflow-x-auto">
+              <div className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-4 sm:px-6 py-4">
                 <div>FLAG</div>
                 <div>CURRENCY</div>
                 <div>CODE</div>
@@ -140,14 +140,14 @@ const RatesTable = () => {
                 <div className="text-right">CHANGE</div>
               </div>
             </div>
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-slate-100 overflow-x-auto">
               {loading && (
-                <div className="px-6 py-10 flex items-center justify-center text-slate-500 gap-2">
+                <div className="px-4 py-10 sm:px-6 flex items-center justify-center text-slate-500 gap-2">
                   <Loader2 className="w-4 h-4 animate-spin" /> Loading live rates…
                 </div>
               )}
               {!loading && filtered.map((r) => (
-                <div key={r.code} className="grid grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+                <div key={r.code} className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-4 sm:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
                   <div>
                     <img src={r.flag} alt={r.code} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
                   </div>
@@ -165,7 +165,7 @@ const RatesTable = () => {
                 </div>
               ))}
               {!loading && filtered.length === 0 && (
-                <div className="px-6 py-8 text-center text-slate-500">No currencies found</div>
+                <div className="px-4 sm:px-6 py-8 text-center text-slate-500">No currencies found</div>
               )}
             </div>
           </div>

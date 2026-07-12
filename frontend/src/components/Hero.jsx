@@ -74,7 +74,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-40 overflow-hidden bg-[#0B1220]">
+    <section id="home" className="relative pt-28 pb-24 sm:pt-32 sm:pb-40 overflow-hidden bg-[#0B1220]">
       {/* Background image with dark overlay */}
       <div className="absolute inset-0">
         <img
@@ -85,7 +85,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/95 to-[#0B1220]/70" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Left: Text */}
         <div>
           <div className="inline-flex items-center gap-2 border border-[#F59E0B]/40 bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wider">
@@ -98,7 +98,7 @@ const Hero = () => {
           <p className="mt-6 text-slate-300 text-lg max-w-lg leading-relaxed">
             Trusted by 50,000+ travelers. Secure, fast, and transparent currency exchange for individuals and businesses in the heart of Nepal.
           </p>
-          <div className="mt-8 flex items-center gap-5 flex-wrap">
+          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
             <Button
               onClick={() => document.getElementById('rates')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-12 px-6 rounded-md font-semibold text-[15px] shadow-lg shadow-[#F59E0B]/20"
@@ -115,8 +115,8 @@ const Hero = () => {
         </div>
 
         {/* Right: Currency Converter Card */}
-        <div className="lg:justify-self-end w-full max-w-md">
-          <div className="bg-white rounded-2xl p-7 shadow-2xl shadow-black/30">
+        <div className="lg:justify-self-end w-full max-w-md mx-auto lg:mx-0">
+          <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-2xl shadow-black/30">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-slate-900">Currency Converter</h3>
               {loading ? (
@@ -134,7 +134,7 @@ const Hero = () => {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="bg-transparent outline-none text-2xl font-semibold text-slate-900 w-40"
+                className="bg-transparent outline-none text-xl sm:text-2xl font-semibold text-slate-900 w-full max-w-[9rem]"
               />
               <CurrencyPicker value={fromCode} onChange={setFromCode} open={fromOpen} setOpen={setFromOpen} />
             </div>
@@ -147,8 +147,8 @@ const Hero = () => {
 
             <label className="text-[11px] font-bold text-slate-500 tracking-wider">AMOUNT YOU RECEIVE</label>
             <div className="mt-2 flex items-center justify-between border border-slate-200 rounded-lg px-4 h-14">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-semibold text-slate-900">{receive}</span>
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-xl sm:text-2xl font-semibold text-slate-900 truncate">{receive}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Eye className="w-4 h-4 text-slate-400" />
@@ -176,7 +176,7 @@ const Hero = () => {
 
       {/* Bottom rate ticker */}
       <div className="absolute bottom-0 left-0 right-0 bg-[#050B15]/90 backdrop-blur-sm border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center gap-8 lg:gap-12 overflow-x-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-4 flex items-center gap-4 sm:gap-8 lg:gap-12 overflow-x-auto">
           {tickerData.map(t => (
             <div key={t.pair} className="flex items-center gap-3 text-sm whitespace-nowrap">
               <span className="font-bold text-white">{t.pair}</span>
