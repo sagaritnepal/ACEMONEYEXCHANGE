@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Play, ArrowUpDown, ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Eye } from 'lucide-react';
-import { tickerRates, currencyOptions, rateMap } from '../mock/mockData';
+import { Play, ArrowUpDown, ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Eye, Loader2 } from 'lucide-react';
+import { currencyOptions, rateMap } from '../mock/mockData';
+import { fetchLiveRates, convert, pairRate } from '../services/ratesService';
 
 const Hero = () => {
   const [fromCode, setFromCode] = useState('USD');
@@ -9,16 +10,43 @@ const Hero = () => {
   const [amount, setAmount] = useState(1000);
   const [fromOpen, setFromOpen] = useState(false);
   const [toOpen, setToOpen] = useState(false);
+  const [liveRates, setLiveRates] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchLiveRates()
+      .then((data) => setLiveRates(data.rates))
+      .catch(() => setLiveRates(null))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const activeRates = liveRates || rateMap;
 
   const receive = useMemo(() => {
-    const r = (rateMap[fromCode] || 1) / (rateMap[toCode] || 1);
-    return (Number(amount) * r).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }, [amount, fromCode, toCode]);
+    const value = liveRates
+      ? convert(amount, fromCode, toCode, liveRates)
+      : (Number(amount) * (rateMap[fromCode] || 1)) / (rateMap[toCode] || 1);
+    return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }, [amount, fromCode, toCode, liveRates]);
 
   const marketRate = useMemo(() => {
-    const r = (rateMap[fromCode] || 1) / (rateMap[toCode] || 1);
+    const r = liveRates
+      ? pairRate(fromCode, toCode, liveRates)
+      : (rateMap[fromCode] || 1) / (rateMap[toCode] || 1);
     return `1 ${fromCode} = ${r.toFixed(2)} ${toCode}`;
-  }, [fromCode, toCode]);
+  }, [fromCode, toCode, liveRates]);
+
+  // Live ticker (pairs vs NPR)
+  const tickerPairs = ['USD', 'EUR', 'GBP', 'AUD', 'INR'];
+  const tickerData = tickerPairs.map((c) => {
+    const rate = liveRates ? pairRate(c, 'NPR', liveRates) : (rateMap[c] || 0) / (rateMap['NPR'] || 1);
+    return {
+      pair: `${c}/NPR`,
+      buy: rate * 0.998,
+      sell: rate * 1.005,
+      up: Math.random() > 0.35,
+    };
+  });
 
   const swap = () => { setFromCode(toCode); setToCode(fromCode); };
 
@@ -89,7 +117,16 @@ const Hero = () => {
         {/* Right: Currency Converter Card */}
         <div className="lg:justify-self-end w-full max-w-md">
           <div className="bg-white rounded-2xl p-7 shadow-2xl shadow-black/30">
-            <h3 className="text-xl font-bold text-slate-900 mb-6">Currency Converter</h3>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-slate-900">Currency Converter</h3>
+              {loading ? (
+                <div className="flex items-center gap-1.5 text-xs text-slate-500"><Loader2 className="w-3 h-3 animate-spin" />Loading</div>
+              ) : liveRates ? (
+                <div className="flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> LIVE
+                </div>
+              ) : null}
+            </div>
 
             <label className="text-[11px] font-bold text-slate-500 tracking-wider">AMOUNT TO SEND</label>
             <div className="mt-2 flex items-center justify-between border border-slate-200 rounded-lg px-4 h-14 focus-within:border-[#F59E0B] transition-colors">
@@ -140,7 +177,7 @@ const Hero = () => {
       {/* Bottom rate ticker */}
       <div className="absolute bottom-0 left-0 right-0 bg-[#050B15]/90 backdrop-blur-sm border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center gap-8 lg:gap-12 overflow-x-auto">
-          {tickerRates.map(t => (
+          {tickerData.map(t => (
             <div key={t.pair} className="flex items-center gap-3 text-sm whitespace-nowrap">
               <span className="font-bold text-white">{t.pair}</span>
               <span className="text-slate-400 font-mono text-xs">B: <span className="text-slate-200">{t.buy.toFixed(2)}</span></span>
