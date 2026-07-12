@@ -129,43 +129,83 @@ const RatesTable = () => {
           </div>
 
           <div className="rounded-xl border border-slate-200 overflow-hidden">
-            <div className="bg-[#0F1B2E] text-[#F59E0B] text-[11px] font-bold tracking-wider overflow-x-auto">
-              <div className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-4 sm:px-6 py-4">
-                <div>FLAG</div>
-                <div>CURRENCY</div>
-                <div>CODE</div>
-                <div>UNIT</div>
-                <div className="text-right">BUYING (NPR)</div>
-                <div className="text-right">SELLING (NPR)</div>
-                <div className="text-right">CHANGE</div>
+            {/* Table layout (tablet and up) */}
+            <div className="hidden sm:block">
+              <div className="bg-[#0F1B2E] text-[#F59E0B] text-[11px] font-bold tracking-wider overflow-x-auto">
+                <div className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-6 py-4">
+                  <div>FLAG</div>
+                  <div>CURRENCY</div>
+                  <div>CODE</div>
+                  <div>UNIT</div>
+                  <div className="text-right">BUYING (NPR)</div>
+                  <div className="text-right">SELLING (NPR)</div>
+                  <div className="text-right">CHANGE</div>
+                </div>
+              </div>
+              <div className="divide-y divide-slate-100 overflow-x-auto">
+                {loading && (
+                  <div className="px-6 py-10 flex items-center justify-center text-slate-500 gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin" /> Loading live rates…
+                  </div>
+                )}
+                {!loading && filtered.map((r) => (
+                  <div key={r.code} className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+                    <div>
+                      <img src={r.flag} alt={r.code} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
+                    </div>
+                    <div className="text-slate-800 font-medium">{r.currency}</div>
+                    <div className="text-slate-500 text-sm">{r.code}</div>
+                    <div className="text-slate-600 text-sm">{r.unit}</div>
+                    <div className="text-right font-semibold text-slate-900">{r.buying.toFixed(2)}</div>
+                    <div className="text-right font-semibold text-slate-900">{r.selling.toFixed(2)}</div>
+                    <div className="text-right">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold ${r.up ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                        {r.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                        {r.change.toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+                {!loading && filtered.length === 0 && (
+                  <div className="px-6 py-8 text-center text-slate-500">No currencies found</div>
+                )}
               </div>
             </div>
-            <div className="divide-y divide-slate-100 overflow-x-auto">
+
+            {/* Card layout (mobile) */}
+            <div className="sm:hidden divide-y divide-slate-100">
               {loading && (
-                <div className="px-4 py-10 sm:px-6 flex items-center justify-center text-slate-500 gap-2">
+                <div className="px-4 py-10 flex items-center justify-center text-slate-500 gap-2">
                   <Loader2 className="w-4 h-4 animate-spin" /> Loading live rates…
                 </div>
               )}
               {!loading && filtered.map((r) => (
-                <div key={r.code} className="grid min-w-[720px] grid-cols-[70px_1fr_100px_80px_140px_140px_120px] px-4 sm:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
-                  <div>
-                    <img src={r.flag} alt={r.code} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
-                  </div>
-                  <div className="text-slate-800 font-medium">{r.currency}</div>
-                  <div className="text-slate-500 text-sm">{r.code}</div>
-                  <div className="text-slate-600 text-sm">{r.unit}</div>
-                  <div className="text-right font-semibold text-slate-900">{r.buying.toFixed(2)}</div>
-                  <div className="text-right font-semibold text-slate-900">{r.selling.toFixed(2)}</div>
-                  <div className="text-right">
-                    <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold ${r.up ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                <div key={r.code} className="px-4 py-4 hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <img src={r.flag} alt={r.code} className="w-8 h-8 rounded-full object-cover border border-slate-200 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-slate-800 font-medium truncate">{r.currency}</div>
+                      <div className="text-slate-500 text-xs">{r.code} · Unit {r.unit}</div>
+                    </div>
+                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold flex-shrink-0 ${r.up ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
                       {r.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                       {r.change.toFixed(2)}
                     </span>
                   </div>
+                  <div className="mt-3 grid grid-cols-2 gap-3">
+                    <div className="rounded-lg bg-slate-50 px-3 py-2">
+                      <div className="text-[10px] font-bold text-slate-400 tracking-wider">BUYING (NPR)</div>
+                      <div className="text-lg font-bold text-slate-900">{r.buying.toFixed(2)}</div>
+                    </div>
+                    <div className="rounded-lg bg-slate-50 px-3 py-2">
+                      <div className="text-[10px] font-bold text-slate-400 tracking-wider">SELLING (NPR)</div>
+                      <div className="text-lg font-bold text-slate-900">{r.selling.toFixed(2)}</div>
+                    </div>
+                  </div>
                 </div>
               ))}
               {!loading && filtered.length === 0 && (
-                <div className="px-4 sm:px-6 py-8 text-center text-slate-500">No currencies found</div>
+                <div className="px-4 py-8 text-center text-slate-500">No currencies found</div>
               )}
             </div>
           </div>
