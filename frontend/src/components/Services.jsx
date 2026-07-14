@@ -1,8 +1,8 @@
 import React from 'react';
-import { Wallet, Send, Plane, ArrowRight } from 'lucide-react';
+import { Wallet, Plane, ArrowRight } from 'lucide-react';
 import { services } from '../mock/mockData';
 
-const iconMap = { Wallet, Send, Plane };
+const iconMap = { Wallet, Plane };
 
 const Services = () => {
   return (
@@ -15,7 +15,7 @@ const Services = () => {
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
           </div>
           <h2 className="mt-4 text-[#0B1220] font-extrabold tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            Complete Currency Solutions
+            Professional financial solutions for every traveler
           </h2>
         </div>
 
@@ -24,9 +24,16 @@ const Services = () => {
             const Icon = iconMap[s.icon];
             return (
               <div key={s.title} className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100">
-                <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
-                  <Icon className="w-7 h-7 text-[#F59E0B]" />
-                </div>
+                {s.badges ? (
+                  <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex flex-col items-start justify-center gap-1 px-2.5 group-hover:bg-[#F59E0B]/20 transition-colors">
+                    <span className="text-[9px] font-extrabold tracking-wide text-blue-600 bg-white rounded px-1.5 py-0.5 shadow-sm">VISA</span>
+                    <span className="text-[9px] font-extrabold tracking-wide text-orange-600 bg-white rounded px-1.5 py-0.5 shadow-sm">MC</span>
+                  </div>
+                ) : (
+                  <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
+                    <Icon className="w-7 h-7 text-[#F59E0B]" />
+                  </div>
+                )}
                 <h3 className="mt-6 text-xl font-bold text-[#0B1220]">{s.title}</h3>
                 <p className="mt-3 text-slate-600 leading-relaxed">{s.description}</p>
                 <button className="mt-5 inline-flex items-center gap-2 text-[#F59E0B] font-semibold hover:gap-3 transition-all">

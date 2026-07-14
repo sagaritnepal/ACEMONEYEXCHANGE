@@ -43,15 +43,29 @@ export const services = [
     description: 'Buy and sell over 30 major global currencies at industry-leading rates with zero hidden commission fees.'
   },
   {
-    icon: 'Send',
-    title: 'Wire Transfer',
-    description: 'Fast and secure international money transfers through SWIFT and global remittance networks.'
+    icon: 'CardSwipe',
+    badges: ['VISA', 'MC'],
+    title: 'Card Swipe',
+    description: 'Convenient card payment solutions for seamless transactions at any point of sale worldwide.'
   },
   {
     icon: 'Plane',
     title: 'Travel Money',
     description: 'Secure your travel currency ahead of time. Pre-order online and pick up at our Thamel branch.'
   }
+];
+
+export const testimonials = [
+  { name: 'Aisha Khan', date: '2 days ago', rating: 5, text: 'Best exchange rates found in Thamel. No hidden fees and the staff explained everything clearly.' },
+  { name: 'Rohan Patel', date: '1 week ago', rating: 5, text: 'Smooth wire transfer experience. The team helped me verify the recipient details and it arrived quickly.' },
+  { name: 'Sofia Lee', date: '2 weeks ago', rating: 5, text: 'Pre-ordered travel money online and picked it up without waiting. Great rates and friendly service.' },
+  { name: 'Marcus Chen', date: '3 weeks ago', rating: 5, text: "Fast, transparent, and zero surprises. I'll use this service for every trip from now on." },
+  { name: 'Elena Ruiz', date: '1 month ago', rating: 5, text: 'Great communication and clear instructions. I was able to exchange currency quickly before my flight.' },
+  { name: 'Daniel Kim', date: '1 month ago', rating: 5, text: 'Secure, reliable, and fast. The branch staff were helpful and explained the process clearly.' },
+  { name: 'Nalani Singh', date: '2 months ago', rating: 5, text: 'Easy online booking and pickup. The team was responsive and helped me with a last-minute currency change.' },
+  { name: 'Omar Ali', date: '2 months ago', rating: 5, text: 'Best rates in town and no commission. I compared a few places before choosing this one.' },
+  { name: 'Lucas Brooks', date: '3 months ago', rating: 5, text: 'Wire transfer was fast and the fees were lower than my bank. Highly recommended for international travel.' },
+  { name: 'Camila Santos', date: '3 months ago', rating: 5, text: "Clean experience from start to finish. I'll definitely use this service for my next trip abroad." },
 ];
 
 export const stats = [
