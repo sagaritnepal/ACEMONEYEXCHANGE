@@ -46,7 +46,7 @@ const About = () => {
         <div className="relative">
           <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto w-full">
             <img
-              src="/storefront.png"
+              src="/storefront-photo.png"
               alt="Ace Money Exchange storefront in Thamel"
               className="w-full h-full object-cover"
             />
