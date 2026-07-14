@@ -46,8 +46,8 @@ const About = () => {
         <div className="relative">
           <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto w-full">
             <img
-              src="https://images.unsplash.com/photo-1536690069676-13101e1659ed"
-              alt="Thamel Kathmandu"
+              src="/storefront.png"
+              alt="Ace Money Exchange storefront in Thamel"
               className="w-full h-full object-cover"
             />
           </div>
