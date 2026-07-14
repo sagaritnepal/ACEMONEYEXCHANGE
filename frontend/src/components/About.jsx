@@ -54,7 +54,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative pb-14 sm:pb-16">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto w-full">
             {storePhotos.map((src, i) => (
               <img
@@ -65,7 +65,7 @@ const About = () => {
               />
             ))}
           </div>
-          <div className="absolute top-4 left-4 right-4 sm:left-6 sm:right-auto bg-white rounded-xl shadow-xl p-4 sm:p-5 w-auto max-w-[16rem] sm:w-64">
+          <div className="absolute -bottom-2 right-2 sm:right-6 bg-white rounded-xl shadow-xl p-4 sm:p-5 w-auto max-w-[16rem] sm:w-64">
             <div className="font-bold text-slate-900">Google Reviews</div>
             <div className="mt-1 flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
