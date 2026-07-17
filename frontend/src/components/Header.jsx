@@ -3,20 +3,8 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
-  <a href="#home" className="flex items-center gap-2 sm:gap-3 group min-w-0">
-    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#F59E0B] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow flex-shrink-0">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900">
-        <path d="M6 20V10"/>
-        <path d="M6 10c0-3 2-6 6-6s6 3 6 6"/>
-        <path d="M18 10v10"/>
-        <path d="M2 20h20"/>
-        <path d="M9 14h6"/>
-      </svg>
-    </div>
-    <div className="flex flex-col leading-tight min-w-0">
-      <span className="font-extrabold tracking-tight text-[12px] sm:text-[15px] text-white whitespace-nowrap">ACE MONEY EXCHANGE</span>
-      <span className="text-[9px] sm:text-[10px] tracking-[0.22em] text-[#F59E0B] font-semibold whitespace-nowrap">MONEY EXCHANGE</span>
-    </div>
+  <a href="#home" className="flex items-center group min-w-0">
+    <img src="/ace-logo.png" alt="Ace Money Exchange" className="h-9 sm:h-11 w-auto flex-shrink-0" />
   </a>
 );
 
