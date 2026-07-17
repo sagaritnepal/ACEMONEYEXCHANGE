@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
   <a href="#home" className="flex items-center group min-w-0">
-    <img src="/ace-logo-v2.svg" alt="Ace Money Exchange" className="h-14 sm:h-16 w-auto flex-shrink-0" />
+    <img src="/ace-logo-v3.svg" alt="Ace Money Exchange" className="h-14 sm:h-16 w-auto flex-shrink-0" />
   </a>
 );
 
