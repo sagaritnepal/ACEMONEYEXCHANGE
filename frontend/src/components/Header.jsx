@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
   <a href="#home" className="flex items-center group min-w-0">
-    <img src="/ace-logo-v2.svg" alt="Ace Money Exchange" className="h-16 sm:h-20 w-auto flex-shrink-0" />
+    <img src="/ace-logo-v2.svg" alt="Ace Money Exchange" className="h-14 sm:h-16 w-auto flex-shrink-0" />
   </a>
 );
 
@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B1220]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 sm:h-24 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-3">
         <Logo />
         <nav className="hidden md:flex items-center gap-9">
           {links.map(l => (
