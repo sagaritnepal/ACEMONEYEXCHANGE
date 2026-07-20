@@ -21,7 +21,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className="font-bold text-white">Our Address</div>
-                <div className="mt-1 text-slate-400">Thamel Marg, Kathmandu 44600, Nepal</div>
+                <div className="mt-1 text-slate-400">Thamel Marg (Opposite of Karmachari Sanchayakosh Building), Kathmandu</div>
               </div>
             </div>
             <div className="flex items-start gap-5">
@@ -49,22 +49,20 @@ const Contact = () => {
         <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto">
           <iframe
             title="Ace Money Exchange Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0324833!2d85.3095!3d27.7154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18e5c%3A0x0!2sThamel!5e0!3m2!1sen!2snp!4v1"
-            className="w-full h-1/2 border-0"
+            src="https://www.google.com/maps?q=Karmachari+Sanchaya+Kosh+Building%2C+Tridevi+Marg%2C+Thamel%2C+Kathmandu+44600%2C+Nepal&output=embed"
+            className="w-full h-full border-0"
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
-          <div className="relative h-1/2">
-            <img
-              src="https://images.unsplash.com/photo-1651326777778-e5a3bf9aa717"
-              alt="Thamel Street"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full">
-              <div className="w-12 h-12 rounded-full bg-[#F59E0B] flex items-center justify-center shadow-lg ring-4 ring-white/30">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-            </div>
-          </div>
+          <a
+            href="https://share.google/FMEXHu06HK3l8Kmlk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 font-semibold text-sm px-4 py-2 rounded-full shadow-lg transition-colors"
+          >
+            <MapPin className="w-4 h-4" />
+            Get Directions
+          </a>
         </div>
       </div>
     </section>

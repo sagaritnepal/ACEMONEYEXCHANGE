@@ -26,9 +26,20 @@ const Footer = () => {
               Your trusted partner for currency exchange in Kathmandu. Licensed by Nepal Rastra Bank and serving the Thamel community for over a decade.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((I, idx) => (
-                <a key={idx} href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F59E0B] flex items-center justify-center text-slate-300 hover:text-slate-900 transition-colors">
-                  <I className="w-4 h-4" />
+              {[
+                { Icon: Facebook, href: 'https://www.facebook.com/share/178RSLEeNZ/' },
+                { Icon: Twitter, href: '#' },
+                { Icon: Instagram, href: '#' },
+                { Icon: Linkedin, href: '#' },
+              ].map(({ Icon, href }, idx) => (
+                <a
+                  key={idx}
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
+                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F59E0B] flex items-center justify-center text-slate-300 hover:text-slate-900 transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
