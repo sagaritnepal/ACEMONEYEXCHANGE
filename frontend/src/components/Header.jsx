@@ -50,7 +50,7 @@ const Header = () => {
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button onClick={() => goTo('rates')} className="bg-[#0F1B2E] hover:bg-[#182640] text-white border border-white/10 h-11 px-5 rounded-md text-sm font-semibold">
+          <Button onClick={() => goTo('contact')} className="bg-[#0F1B2E] hover:bg-[#182640] text-white border border-white/10 h-11 px-5 rounded-md text-sm font-semibold">
             Get Live Rates
           </Button>
         </div>
@@ -66,7 +66,7 @@ const Header = () => {
                 {l.label}
               </button>
             ))}
-            <Button onClick={() => goTo('rates')} className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-11 rounded-md font-semibold">
+            <Button onClick={() => goTo('contact')} className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-11 rounded-md font-semibold">
               Get Live Rates
             </Button>
           </div>

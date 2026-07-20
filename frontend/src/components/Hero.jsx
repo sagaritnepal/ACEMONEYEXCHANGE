@@ -100,7 +100,7 @@ const Hero = () => {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
             <Button
-              onClick={() => document.getElementById('rates')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-12 px-6 rounded-md font-semibold text-[15px] shadow-lg shadow-[#F59E0B]/20"
             >
               Get Current Rates
