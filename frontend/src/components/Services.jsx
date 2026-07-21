@@ -36,12 +36,12 @@ const Services = () => {
             return (
               <div key={s.title} className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
                 {s.badges ? (
-                  <div className="flex items-center gap-2">
-                    <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
-                      <img src="/visa-logo.webp" alt="Visa" className="h-5 w-auto object-contain" />
+                  <div className="flex items-stretch gap-3 w-full">
+                    <div className="flex-1 h-24 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
+                      <img src="/visa-logo.webp" alt="Visa" className="h-10 w-auto object-contain" />
                     </div>
-                    <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
-                      <img src="/mastercard-logo.webp" alt="MasterCard" className="h-7 w-auto object-contain" />
+                    <div className="flex-1 h-24 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
+                      <img src="/mastercard-logo.webp" alt="MasterCard" className="h-14 w-auto object-contain" />
                     </div>
                   </div>
                 ) : (
