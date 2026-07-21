@@ -1,15 +1,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Play, ArrowUpDown, ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Eye, Loader2 } from 'lucide-react';
+import { Play, ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Loader2 } from 'lucide-react';
 import { currencyOptions, rateMap } from '../mock/mockData';
 import { fetchLiveRates, convert, pairRate } from '../services/ratesService';
 
 const Hero = () => {
   const [fromCode, setFromCode] = useState('USD');
-  const [toCode, setToCode] = useState('NPR');
+  const toCode = 'NPR';
   const [amount, setAmount] = useState(1000);
   const [fromOpen, setFromOpen] = useState(false);
-  const [toOpen, setToOpen] = useState(false);
   const [liveRates, setLiveRates] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -36,22 +35,21 @@ const Hero = () => {
     return `1 ${fromCode} = ${r.toFixed(2)} ${toCode}`;
   }, [fromCode, toCode, liveRates]);
 
-  // Live ticker (pairs vs NPR)
+  // Live ticker — buy rates only (Ace Money Exchange buys foreign currency, it does not sell)
   const tickerPairs = ['USD', 'EUR', 'GBP', 'AUD', 'INR'];
   const tickerData = tickerPairs.map((c) => {
     const rate = liveRates ? pairRate(c, 'NPR', liveRates) : (rateMap[c] || 0) / (rateMap['NPR'] || 1);
     return {
       pair: `${c}/NPR`,
       buy: rate * 0.998,
-      sell: rate * 1.005,
       up: Math.random() > 0.35,
     };
   });
 
-  const swap = () => { setFromCode(toCode); setToCode(fromCode); };
+  const foreignCurrencyOptions = currencyOptions.filter(o => o.code !== 'NPR');
 
   const CurrencyPicker = ({ value, onChange, open, setOpen }) => {
-    const opt = currencyOptions.find(o => o.code === value) || currencyOptions[0];
+    const opt = foreignCurrencyOptions.find(o => o.code === value) || foreignCurrencyOptions[0];
     return (
       <div className="relative">
         <button type="button" onClick={() => setOpen(!open)} className="flex items-center gap-2 pl-2 pr-1 h-10 rounded-md hover:bg-slate-100 transition-colors">
@@ -61,7 +59,7 @@ const Hero = () => {
         </button>
         {open && (
           <div className="absolute right-0 top-11 z-20 bg-white border border-slate-200 rounded-md shadow-lg py-1 min-w-[130px]">
-            {currencyOptions.map(o => (
+            {foreignCurrencyOptions.map(o => (
               <button key={o.code} onClick={() => { onChange(o.code); setOpen(false); }} className="flex items-center gap-2 w-full px-3 py-2 hover:bg-slate-50 text-left">
                 <img src={o.flag} alt={o.code} className="w-5 h-4 object-cover rounded-sm" />
                 <span className="font-medium text-slate-800 text-sm">{o.code}</span>
@@ -117,7 +115,7 @@ const Hero = () => {
         {/* Right: Currency Converter Card */}
         <div className="lg:justify-self-end w-full max-w-md mx-auto lg:mx-0">
           <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-2xl shadow-black/30">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-2">
               <h3 className="text-xl font-bold text-slate-900">Currency Converter</h3>
               {loading ? (
                 <div className="flex items-center gap-1.5 text-xs text-slate-500"><Loader2 className="w-3 h-3 animate-spin" />Loading</div>
@@ -127,8 +125,9 @@ const Hero = () => {
                 </div>
               ) : null}
             </div>
+            <p className="text-xs text-slate-400 mb-4">We buy foreign currency for Nepali Rupees (NPR)</p>
 
-            <label className="text-[11px] font-bold text-slate-500 tracking-wider">AMOUNT TO SEND</label>
+            <label className="text-[11px] font-bold text-slate-500 tracking-wider">YOU EXCHANGE</label>
             <div className="mt-2 flex items-center justify-between border border-slate-200 rounded-lg px-4 h-14 focus-within:border-[#F59E0B] transition-colors">
               <input
                 type="number"
@@ -140,19 +139,19 @@ const Hero = () => {
             </div>
 
             <div className="flex justify-center my-3">
-              <button onClick={swap} className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#F59E0B]/15 flex items-center justify-center transition-colors group">
-                <ArrowUpDown className="w-4 h-4 text-slate-600 group-hover:text-[#F59E0B]" />
-              </button>
+              <span className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                <ChevronDown className="w-4 h-4" />
+              </span>
             </div>
 
-            <label className="text-[11px] font-bold text-slate-500 tracking-wider">AMOUNT YOU RECEIVE</label>
+            <label className="text-[11px] font-bold text-slate-500 tracking-wider">YOU RECEIVE (NPR)</label>
             <div className="mt-2 flex items-center justify-between border border-slate-200 rounded-lg px-4 h-14">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="text-xl sm:text-2xl font-semibold text-slate-900 truncate">{receive}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Eye className="w-4 h-4 text-slate-400" />
-                <CurrencyPicker value={toCode} onChange={setToCode} open={toOpen} setOpen={setToOpen} />
+              <div className="flex items-center gap-2 pl-2 pr-1 h-10">
+                <img src="https://flagcdn.com/w40/np.png" alt="NPR" className="w-5 h-4 object-cover rounded-sm" />
+                <span className="font-semibold text-slate-900">NPR</span>
               </div>
             </div>
 
@@ -180,8 +179,7 @@ const Hero = () => {
           {tickerData.map(t => (
             <div key={t.pair} className="flex items-center gap-3 text-sm whitespace-nowrap">
               <span className="font-bold text-white">{t.pair}</span>
-              <span className="text-slate-400 font-mono text-xs">B: <span className="text-slate-200">{t.buy.toFixed(2)}</span></span>
-              <span className="text-slate-400 font-mono text-xs">S: <span className="text-slate-200">{t.sell.toFixed(2)}</span></span>
+              <span className="text-slate-400 font-mono text-xs">Buy: <span className="text-slate-200">{t.buy.toFixed(2)}</span></span>
               {t.up
                 ? <TrendingUp className="w-4 h-4 text-emerald-400" />
                 : <TrendingDown className="w-4 h-4 text-rose-400" />}

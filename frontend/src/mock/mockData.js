@@ -40,18 +40,21 @@ export const services = [
   {
     icon: 'Wallet',
     title: 'Foreign Currency Exchange',
-    description: 'Buy and sell over 30 major global currencies at industry-leading rates with zero hidden commission fees.'
+    description: 'We buy over 30 major global currencies at industry-leading rates with zero hidden commission fees.',
+    detail: 'Bring in your foreign cash — USD, EUR, GBP, AUD, INR, and 25+ other currencies — and we convert it to Nepali Rupees on the spot at live, NRB-licensed rates. No commission, no hidden charges, and no paperwork delays. Every note is checked and counted in front of you, and you walk out with your NPR in minutes.'
   },
   {
     icon: 'CardSwipe',
     badges: ['VISA', 'MC'],
-    title: 'Card Swipe',
-    description: 'Convenient card payment solutions for seamless transactions at any point of sale worldwide.'
+    title: 'Visa / MasterCard Swipe',
+    description: 'Accepted here: Visa and MasterCard swipe for fast, cashless payments at our counter.',
+    detail: 'Don\'t have cash on hand? Use your Visa or MasterCard debit/credit card directly at our counter for a secure, cashless transaction. Card swipes are processed instantly with clear, upfront fees shown before you confirm — no surprise charges on your statement.'
   },
   {
     icon: 'Plane',
     title: 'Travel Money',
-    description: 'Secure your travel currency ahead of time. Pre-order online and pick up at our Thamel branch.'
+    description: 'Landing in Nepal? Exchange your foreign currency for Nepali Rupees the moment you arrive and start your trip with cash in hand.',
+    detail: 'Tourists and travelers can walk in with any major foreign currency and exchange it for Nepali Rupees right away — no advance booking required. It\'s the easiest way to get local cash for taxis, hotels, shopping, and food as soon as you land in Kathmandu. Our Thamel branch is open every day, so you can top up your Rupees whenever you need to during your trip.'
   }
 ];
 
