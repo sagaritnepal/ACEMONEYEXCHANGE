@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Play, ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Loader2 } from 'lucide-react';
+import { ChevronDown, ShieldCheck, TrendingUp, TrendingDown, Loader2 } from 'lucide-react';
 import { currencyOptions, rateMap } from '../mock/mockData';
 import { fetchLiveRates, convert, pairRate } from '../services/ratesService';
 
@@ -96,20 +96,6 @@ const Hero = () => {
           <p className="mt-6 text-slate-300 text-lg max-w-lg leading-relaxed">
             Trusted by 50,000+ travelers. Secure, fast, and transparent currency exchange for individuals and businesses in the heart of Nepal.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-            <Button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-12 px-6 rounded-md font-semibold text-[15px] shadow-lg shadow-[#F59E0B]/20"
-            >
-              Get Current Rates
-            </Button>
-            <button className="flex items-center gap-3 text-white group">
-              <span className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#F59E0B] group-hover:bg-[#F59E0B]/10 transition-all">
-                <Play className="w-4 h-4 fill-white text-white group-hover:fill-[#F59E0B] group-hover:text-[#F59E0B]" />
-              </span>
-              <span className="text-[15px] font-medium">See how we work</span>
-            </button>
-          </div>
         </div>
 
         {/* Right: Currency Converter Card */}

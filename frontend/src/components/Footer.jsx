@@ -48,8 +48,13 @@ const Footer = () => {
           <div className="md:pl-8">
             <h4 className="font-bold text-white">Quick Links</h4>
             <ul className="mt-5 space-y-3 text-slate-400">
-              {['Exchange Rates', 'Our Services', 'About Us', 'Compliance'].map(l => (
-                <li key={l}><a href="#" className="hover:text-[#F59E0B] transition-colors">{l}</a></li>
+              {[
+                { label: 'Exchange Rates', href: '#' },
+                { label: 'Our Services', href: '#' },
+                { label: 'About Us', href: '#about' },
+                { label: 'Compliance', href: '#' },
+              ].map(({ label, href }) => (
+                <li key={label}><a href={href} className="hover:text-[#F59E0B] transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>
@@ -57,8 +62,12 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-white">Resources</h4>
             <ul className="mt-5 space-y-3 text-slate-400">
-              {['Travel Guides', 'Nepal Rastra Bank', 'Support', 'Sitemap'].map(l => (
-                <li key={l}><a href="#" className="hover:text-[#F59E0B] transition-colors">{l}</a></li>
+              {[
+                { label: 'Nepal Rastra Bank', href: '#' },
+                { label: 'Support', href: '#contact' },
+                { label: 'Sitemap', href: '#contact' },
+              ].map(({ label, href }) => (
+                <li key={label}><a href={href} className="hover:text-[#F59E0B] transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>

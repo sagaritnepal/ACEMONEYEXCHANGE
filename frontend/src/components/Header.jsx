@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 
 const Logo = () => (
@@ -49,11 +48,6 @@ const Header = () => {
             </button>
           ))}
         </nav>
-        <div className="hidden md:block">
-          <Button onClick={() => goTo('contact')} className="bg-[#0F1B2E] hover:bg-[#182640] text-white border border-white/10 h-11 px-5 rounded-md text-sm font-semibold">
-            Get Live Rates
-          </Button>
-        </div>
         <button className="md:hidden flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -66,9 +60,6 @@ const Header = () => {
                 {l.label}
               </button>
             ))}
-            <Button onClick={() => goTo('contact')} className="bg-[#F59E0B] hover:bg-[#E08D0A] text-slate-900 h-11 rounded-md font-semibold">
-              Get Live Rates
-            </Button>
           </div>
         </div>
       )}
