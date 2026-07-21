@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Building2, Landmark, Star } from 'lucide-react';
 import { stats } from '../mock/mockData';
 
-const storePhotos = ['/storefront-photo.png', '/storefront2.png'];
+const storePhotos = ['/storefront1.png', '/storefront2.png'];
 
 const About = () => {
   const [photoIndex, setPhotoIndex] = useState(0);
