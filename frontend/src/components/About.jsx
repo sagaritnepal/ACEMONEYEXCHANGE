@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Building2, Landmark, Star } from 'lucide-react';
 import { stats } from '../mock/mockData';
 
+const storePhotos = ['/storefront1.png', '/storefront2.png'];
+
 const About = () => {
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setPhotoIndex((i) => (i + 1) % storePhotos.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section id="about" className="bg-white py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
@@ -45,11 +56,14 @@ const About = () => {
 
         <div className="relative pb-14 sm:pb-16">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto w-full">
-            <img
-              src="/storefront2.png"
-              alt="Ace Money Exchange storefront in Thamel"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {storePhotos.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt="Ace Money Exchange storefront in Thamel"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === photoIndex ? 'opacity-100' : 'opacity-0'}`}
+              />
+            ))}
           </div>
           <div className="absolute -bottom-2 right-2 sm:right-6 bg-white rounded-xl shadow-xl p-4 sm:p-5 w-auto max-w-[16rem] sm:w-64">
             <div className="font-bold text-slate-900">Google Reviews</div>
