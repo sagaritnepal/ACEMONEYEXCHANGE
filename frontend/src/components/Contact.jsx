@@ -30,7 +30,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className="font-bold text-white">Phone &amp; Email</div>
-                <div className="mt-1 text-slate-400">+977 1-4412345 / info@thamelmoney.com.np</div>
+                <div className="mt-1 text-slate-400">+977 1-4412345 / info@acemoneyexchange.com.np</div>
               </div>
             </div>
             <div className="flex items-start gap-5">
