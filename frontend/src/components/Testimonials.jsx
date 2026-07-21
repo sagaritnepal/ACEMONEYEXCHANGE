@@ -37,9 +37,9 @@ const Testimonials = () => {
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
           </div>
           <h2 className="mt-4 text-[#0B1220] font-extrabold tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            What travelers say about our currency exchange &amp; travel money services
+            What travelers say about our <span className="text-[#F59E0B]">currency exchange &amp; travel money</span> services
           </h2>
-          <div className="mt-4 inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full px-4 py-2">
+          <div className="mt-4 inline-flex items-center gap-2 bg-[#F59E0B]/10 border border-[#F59E0B]/30 rounded-full px-4 py-2">
             <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />

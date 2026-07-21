@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Wallet, Plane, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { services } from '../mock/mockData';
-
-const iconMap = { Wallet, Plane };
 
 const Services = () => {
   const [openIdx, setOpenIdx] = useState(() => new Set());
@@ -25,13 +23,12 @@ const Services = () => {
             <span className="h-[2px] w-8 bg-[#F59E0B]" />
           </div>
           <h2 className="mt-4 text-[#0B1220] font-extrabold tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-            Professional financial solutions for every traveler
+            Professional <span className="text-[#F59E0B]">financial solutions</span> for every traveler
           </h2>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-start">
           {services.map((s, idx) => {
-            const Icon = iconMap[s.icon];
             const isOpen = openIdx.has(idx);
             return (
               <div key={s.title} className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
@@ -44,9 +41,25 @@ const Services = () => {
                       <img src="/mastercard-logo.webp" alt="MasterCard" className="h-14 w-auto object-contain" />
                     </div>
                   </div>
+                ) : s.flags ? (
+                  <div className="flex items-stretch gap-3 w-full">
+                    {s.flags.map((code) => (
+                      <div key={code} className="flex-1 h-24 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
+                        <img
+                          src={`https://flagcdn.com/w160/${code}.png`}
+                          alt={code.toUpperCase()}
+                          className="h-14 w-auto object-cover rounded-md shadow-sm ring-1 ring-black/5"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors">
-                    <Icon className="w-7 h-7 text-[#F59E0B]" />
+                  <div className="flex items-stretch gap-3 w-full">
+                    {s.photos.map((src) => (
+                      <div key={src} className={`flex-1 h-24 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center group-hover:bg-[#F59E0B]/20 transition-colors ${src === '/bus.png' ? 'p-1.5' : 'p-4'}`}>
+                        <img src={src} alt="" className="max-h-full max-w-full object-contain" />
+                      </div>
+                    ))}
                   </div>
                 )}
                 <h3 className="mt-6 text-xl font-bold text-[#0B1220]">{s.title}</h3>
